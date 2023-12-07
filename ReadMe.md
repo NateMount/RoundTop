@@ -24,6 +24,26 @@ Customizable: Tailor the app to your needs with a flexible configuration system 
 
 ## Authentication
 
+The Flask API Server App uses JSON Web Tokens **(JWT)** for authentication. JWT is a secure and efficient method to handle user authentication by creating a token that contains encoded information used in authenticating each request.
+
+#### Make Token Response
+
+```python
+def make_token_response(**payload) -> object:
+    """
+    Make Token Response
+    Used to generate a valid token response based on global environment data
+
+    @param payload: key value pairs to be included in the JWT
+    @returns : JWT
+    """
+
+    return jwt.encode(
+        {'exp': datetime.utcnow() + timedelta(minutes=30), **payload}, 
+        app.config['SECRET_KEY']
+    )
+```
+
 ## Api Documentation
 
 **Note** : All routes make use of JWT authentication, previously mentioned
