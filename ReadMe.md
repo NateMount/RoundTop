@@ -42,6 +42,13 @@ Customizable: Tailor the app to your needs with a flexible configuration system 
 
 **Description:** Create a new record in the specified table.
 
+**Parameters**: 
+- **table_id** : name of table in database
+
+**Json Body**:
+- **Key** : each key is the name of a feature in the selected table
+- **Value** : Set value for that feature
+
 ```python
 @app.route('/<table_id>/make', methods=['POST'])
 @check_table
@@ -59,6 +66,11 @@ def make(table_id:str):
 
 **Description:** Retrive a record stored at index ***i***.
 
+**Parameters**: 
+- **table_id** : name of table in database
+- **i** : index of record
+
+
 ```python
 @app.route('/<table_id>/get/<i>', methods=['GET'])
 @check_table
@@ -74,6 +86,13 @@ def get(table_id:str, i:int):
 **Method:** `GET`
 
 **Description:** Retrive all records in table ***table_id***.
+
+**Parameters**: 
+- **table_id** : name of table in database
+
+**Json Body** ( *Optional* ):
+- **Key** : each key is the name of a feature to filter by
+- **Value** : value to match in that feature
 
 ```python
 @app.route('/<table_id>/get',methods=['GET'])
@@ -93,6 +112,15 @@ def select(table_id:str):
 
 **Description:** Delete all records that match the passed in Json filters.
 
+**Parameters**: 
+- **table_id** : name of table in database
+
+**Json Body** ( *Optional* ):
+- **Key** : each key is the name of a feature to filter by
+- **Value** : value to match in that feature
+
+**NOTE** : No Json body results in clearing whole table
+
 ```python
 @app.route('/<table_id>/drop',methods=['GET'])
 @check_table
@@ -109,6 +137,11 @@ def drop(table_id:str):
 **Method:** `GET`
 
 **Description:** Update a record.
+
+**Parameters**: 
+- **table_id** : name of table in database
+
+**Json Body**:
 
 ```python
 @app.route('/<table_id>/update',methods=['GET'])
