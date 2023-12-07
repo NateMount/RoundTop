@@ -20,7 +20,64 @@ Customizable: Tailor the app to your needs with a flexible configuration system 
 
 ## Usage
 
+
+
 ## Configuration
+The Flask API Server App is designed to be highly configurable to suit various environments and use cases. This section outlines the available configuration options and how to customize the application's behavior.
+
+### Configuration Files
+The configuration settings for the Flask API Server App are defined in the `settings.py` file. This file includes different configurations for development, production, and testing environments.
+
+
+
+#### Available Configurations:
+- **BaseConfig:** Common configuration settings shared across all environments.
+- **DevConfig:** Configuration settings for the development environment.
+- **ProductionConfig:** Configuration settings for the production environment.
+- **TestConfig:** Configuration settings for running tests.
+
+### Environment-based Configuration
+
+The application dynamically selects the configuration based on the `APP_ENV` environment variable. If `APP_ENV` is not specified, the default configuration is set to `Dev`.
+
+#### Available Environment Variables:
+
+- **APP_ENV:** Set this variable to specify the environment (Dev, Production, Test).
+
+### Customizing Configuration
+
+To customize the configuration, you can either modify the `settings.py` file directly or set environment variables. Environment variables take precedence over the configuration file.
+
+#### Example: Set Environment Variable
+
+```bash
+export APP_ENV=Production
+export DB_URI="your_custom_database_uri"
+export LOGGING=True
+```
+
+#### Example: Modify `settings.py`
+```python
+# settings.py
+
+class ProductionConfig(BaseConfig):
+    FLASK_ENV: str = 'production'
+    DB_URI: str = 'your_custom_database_uri'
+    LOGGING: bool = True
+```
+
+### Configuration Options
+Here are some key configuration options:
+
+- **LOGGING**: Enable or disable logging.
+- **TESTING**: Enable or disable testing mode.
+- **DEBUG**: Enable or disable debugging mode.
+- **SECRET**: Secret key used for various cryptographic operations.
+- **JWT_AUTH**: JWT authentication key for securing JSON Web Tokens.
+- **FLASK_ENV**: Flask environment (development, production, testing).
+- **DB_URI**: Database URI for connecting to the database.
+
+Feel free to adjust the configuration to meet the requirements of your specific deployment environment.
 
 ## Authentication
 
