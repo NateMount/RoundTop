@@ -14,19 +14,74 @@ Customizable: Tailor the app to your needs with a flexible configuration system 
 
 ## Table of Contents
 - [Usage](#usage)
+- [Docker](#running-the-app-with-docker)
 - [Configuration](#configuration)
 - [Authentication](#authentication)
 - [API Documentation](#api-documentation)
 
 ## Usage
 
+RoundTop provides a flexible and scalable platform for building and deploying RESTful APIs. Follow the steps below to get started with using the app.
 
+### Prerequisites
+
+Ensure you have the following prerequisites installed before running the Flask API Server App:
+
+- [Python](https://www.python.org/) (>=3.6)
+- [pip](https://pip.pypa.io/en/stable/)
+
+### Installation
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/NateMount/RoundTop.git
+   ```
+
+2. Navigate to the project directory:
+    ```bash
+    cd RoundTop
+    ```
+3. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+#### Configuration
+Customize the application configuration by setting environment variables or modifying the `settings.py` file. Refer to the [Configuration](#configuration) section for more details.
+
+### Running the App
+Run the Flask API Server App with the following command:
+
+```bash
+python wsgi.py
+```
+
+The app will start running on http://localhost:5000 by default.
+
+## Running the App with Docker
+
+To run the Flask API Server App using Docker, follow these steps:
+
+1. Build the Docker image:
+
+    ```bash
+    docker build -t RoundTop .
+    ```
+
+2. Run the Docker container:
+
+    ```bash
+    docker run RoundTop
+    ```
+
+The app will be accessible at `http://localhost:5000` as configured in the Docker container.
 
 ## Configuration
-The Flask API Server App is designed to be highly configurable to suit various environments and use cases. This section outlines the available configuration options and how to customize the application's behavior.
+RoundTop is designed to be highly configurable to suit various environments and use cases. This section outlines the available configuration options and how to customize the application's behavior.
 
 ### Configuration Files
-The configuration settings for the Flask API Server App are defined in the `settings.py` file. This file includes different configurations for development, production, and testing environments.
+The configuration settings for RoundTop are defined in the `settings.py` file. This file includes different configurations for development, production, and testing environments.
 
 
 
@@ -81,7 +136,7 @@ Feel free to adjust the configuration to meet the requirements of your specific 
 
 ## Authentication
 
-The Flask API Server App uses JSON Web Tokens **(JWT)** for authentication. JWT is a secure and efficient method to handle user authentication by creating a token that contains encoded information used in authenticating each request.
+RoundTop uses JSON Web Tokens **(JWT)** for authentication. JWT is a secure and efficient method to handle user authentication by creating a token that contains encoded information used in authenticating each request.
 
 #### Make Token Response
 
