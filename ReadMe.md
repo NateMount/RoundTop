@@ -66,13 +66,13 @@ To run the Flask API Server App using Docker, follow these steps:
 1. Build the Docker image:
 
     ```bash
-    docker build -t RoundTop .
+    docker build -t roundtop .
     ```
 
 2. Run the Docker container:
 
     ```bash
-    docker run RoundTop
+    docker run roundtop
     ```
 
 The app will be accessible at `http://localhost:5000` as configured in the Docker container.
